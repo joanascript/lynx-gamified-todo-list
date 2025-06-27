@@ -26,7 +26,7 @@ export function App(props: Readonly<{ onMounted?: () => void }>) {
       console.error("Error loading from localStorage:", error);
       setListItems(defaultItems);
     }
-  }, [props]);
+  }, [props.onMounted]);
 
   // Save items to localStorage whenever they change
   useEffect(() => {
@@ -95,8 +95,8 @@ export function App(props: Readonly<{ onMounted?: () => void }>) {
         <list style={{ height: "100%" }}>
           {listItems.map((item, i) => (
             <list-item
-              key={item + i}
-              item-key={item + i}
+              key={item + "-" + i}
+              item-key={item + "-" + i}
               style={{
                 display: "flex",
                 marginTop: 10,
